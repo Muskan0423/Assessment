@@ -80,36 +80,44 @@ const Table = () => {
         
             <div className="container">
                 <div className="d-flex justify-content-between align-items-center h-16 position-relative">
-                    {/* <div className="ml-20 text-2xl w text-dark font-weight-bold">
-                        
-                    </div> */}
-                    <button className="btn btn-primary" onClick={exportToExcel}>Export</button>
-                    <div className="d-flex align-items-center">
-                        <FilterListIcon className="text-dark cursor-pointer mr-2" />
-                        <select className="form-select mr-4" onChange={(e) => setFilterStatus(e.target.value)}>
-                            <option value="">All Status</option>
-                            <option value="Completed">Completed</option>
-                            <option value="In Progress">In Progress</option>
-                            <option value="Pending">Pending</option>
-                            {/* Add more Status options as needed */}
-                        </select>
-                        <FilterListIcon className="text-dark cursor-pointer mr-2" />
-                        <select className="form-select mr-4" onChange={(e) => setFilterDistribution(e.target.value)}>
-                            <option value="">All Distribution</option>
-                            <option value="Bangalore">Bangalore</option>
-                            <option value="Jaipur">Jaipur</option>
-                            <option value="Delhi">Delhi</option>
-                            <option value="Kanpur">Kanpur</option>
-                            <option value="Ahmedabad">Ahmedabad</option>
-                            {/* Add more Distribution options as needed */}
-                        </select>
-                        <div className="position-relative ">
+                <div className="position-relative ">
                             <input className="ml-2 pl-3 h-8 w-auto form-control" type="text" maxLength="5" value={search} onChange={(e) => setSearch(e.target.value)} placeholder="Search Particular by ID" />
                             <span onClick={handleSearch} className="bg-dark rounded position-absolute top-0 end-0 mt-2 mr-2">
                                 <SearchIcon className="text-white" />
                             </span>
-                        </div>
-                    </div>
+                        </div>  
+                   
+                        <div  style={{display:"flex",justifyContent:"center"}}>
+    {/* <div className="mr-2">
+        <FilterListIcon className="text-dark cursor-pointer" />
+    </div> */}
+    
+    <div style={{marginRight:120}}>
+    <select  onChange={(e) => setFilterStatus(e.target.value)} style={{height:37,width:150}}>
+        <option value="">All Status</option>
+        <option value="Completed">Completed</option>
+        <option value="In Progress">In Progress</option>
+        <option value="Pending">Pending</option>
+        {/* Add more Status options as needed */}
+    </select>
+    </div>
+    {/* <div className="mr-2">
+        <FilterListIcon className="text-dark cursor-pointer" />
+    </div> */}
+    <div>
+    <select className="form-select mr-4" onChange={(e) => setFilterDistribution(e.target.value)}>
+        <option value="">All Distribution</option>
+        <option value="Bangalore">Bangalore</option>
+        <option value="Jaipur">Jaipur</option>
+        <option value="Delhi">Delhi</option>
+        <option value="Kanpur">Kanpur</option>
+        <option value="Ahmedabad">Ahmedabad</option>
+        {/* Add more Distribution options as needed */}
+    </select>
+    </div>
+</div>
+
+                        <button className="btn btn-primary" onClick={exportToExcel}>Export</button>
                 </div>
                 <div className="container">
                     <div className="max-h-96 border-2 rounded-2 overflow-hIDden shadow m-5">
@@ -125,14 +133,14 @@ const Table = () => {
                         </div>
                         <div className="row border-bottom-2 border-secondary text-center rounded-top-2 text-dark text-xl bg-light">
                             {searchdata.map((item, index) => (
-                                <div className={`row text-center ${index % 2 === 0 ? 'bg-secondary' : 'bg-dark'} text-white h-8 rounded-xl mx-3`} key={index}>
-                                    <div className="col p-2">
-                                        <input type="checkbox" onChange={() => toggleOrderSelection(item.ID)} checked={selectedOrders.includes(item.ID)} />
+                                <div className={`row  ${index % 2 === 0 ? 'bg-secondary' : 'bg-dark'} text-white h-8 rounded-xl mx-1`} key={index}>
+                                    <div className="col-2 p-2">
+                                        <input type="checkbox" onChange={() => toggleOrderSelection(item.ID)} checked={selectedOrders.includes(item.ID)} className="ml-lg-2"  />
                                     </div>
-                                    <div className="col p-2"><span className="text-white">{item.ID}</span></div>
-                                    <div className="col p-2"><span className="text-white">{item.Status}</span></div>
-                                    <div className="col p-2"><span className="text-white">{item.Remarks}</span></div>
-                                    <div className="col p-2"><span className="text-white">{item.Distribution}</span></div>
+                                    <div className="col-3 p-2"><span className="text-white">{item.ID}</span></div>
+                                    <div className="col-2 p-2"><span className="text-white">{item.Status}</span></div>
+                                    <div className="col-3 p-2"><span className="text-white">{item.Remarks}</span></div>
+                                    <div className="col-2 p-2"><span className="text-white">{item.Distribution}</span></div>
                                 </div>
                             ))}
                         </div>
